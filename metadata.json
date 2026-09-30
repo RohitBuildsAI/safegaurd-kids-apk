@@ -1,0 +1,6 @@
+{
+  "name": "SafeGuard Kids",
+  "description": "Production-ready parental-control and digital-wellbeing companion app featuring screen time management, app/website controls, geofencing, transparent device pairing, and SOS safety.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

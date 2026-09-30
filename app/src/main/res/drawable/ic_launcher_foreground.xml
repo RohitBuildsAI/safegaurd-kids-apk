@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Shield Outline & Body -->
+    <path
+        android:pathData="M54,23 L79,33 C79,57 68,75 54,84 C40,75 29,57 29,33 Z"
+        android:strokeWidth="3"
+        android:strokeColor="#38BDF8">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="54"
+                android:startY="23"
+                android:endX="54"
+                android:endY="84"
+                android:type="linear">
+                <item android:color="#2563EB" android:offset="0.0" />
+                <item android:color="#0284C7" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Inner Glow Shield -->
+    <path
+        android:pathData="M54,28 L74,36 C74,54 64,69 54,77 C44,69 34,54 34,36 Z"
+        android:fillColor="#151E3A8A" />
+
+    <!-- Parent & Child Silhouettes -->
+    <!-- Parent Head -->
+    <path
+        android:pathData="M48,43 A4.5,4.5 0 1 1 48,34 A4.5,4.5 0 1 1 48,43 Z"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Child Head -->
+    <path
+        android:pathData="M61,48 A3.5,3.5 0 1 1 61,41 A3.5,3.5 0 1 1 61,48 Z"
+        android:fillColor="#FBBF24" />
+
+    <!-- Parent Body -->
+    <path
+        android:pathData="M40,65 C40,54 56,54 56,65 Z"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Child Body -->
+    <path
+        android:pathData="M55,66 C55,57 67,57 67,66 Z"
+        android:fillColor="#FBBF24" />
+
+    <!-- Protective Heart / Star in Center -->
+    <path
+        android:pathData="M54,49 C54,49 52,47 50,47 C48,47 47,48.5 47,50 C47,52 54,56 54,56 C54,56 61,52 61,50 C61,48.5 60,47 58,47 C56,47 54,49 54,49 Z"
+        android:fillColor="#F43F5E" />
+</vector>

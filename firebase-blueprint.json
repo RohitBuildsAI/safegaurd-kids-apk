@@ -1,0 +1,134 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Registered user profile with family affiliation and role",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" },
+        "familyId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "email"]
+    },
+    "Family": {
+      "title": "Family",
+      "description": "Family account unit linking parents, children, and paired devices",
+      "type": "object",
+      "properties": {
+        "familyId": { "type": "string" },
+        "name": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "inviteCode": { "type": "string" },
+        "memberIds": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["familyId", "name", "ownerId"]
+    },
+    "Device": {
+      "title": "Device",
+      "description": "Registered parent or companion mobile device",
+      "type": "object",
+      "properties": {
+        "deviceId": { "type": "string" },
+        "familyId": { "type": "string" },
+        "childId": { "type": "string" },
+        "deviceName": { "type": "string" },
+        "deviceModel": { "type": "string" },
+        "platform": { "type": "string" },
+        "pairedAt": { "type": "number" },
+        "lastSeen": { "type": "number" },
+        "batteryPct": { "type": "number" },
+        "isOnline": { "type": "boolean" }
+      },
+      "required": ["deviceId", "familyId", "deviceName"]
+    },
+    "ChildProfile": {
+      "title": "ChildProfile",
+      "description": "Child device companion profile",
+      "type": "object",
+      "properties": {
+        "childId": { "type": "string" },
+        "parentId": { "type": "string" },
+        "name": { "type": "string" },
+        "age": { "type": "number" },
+        "avatarEmoji": { "type": "string" },
+        "deviceModel": { "type": "string" },
+        "onlineStatus": { "type": "string" },
+        "batteryPct": { "type": "number" },
+        "todayUsedMinutes": { "type": "number" },
+        "dailyLimitMinutes": { "type": "number" },
+        "isDevicePaused": { "type": "boolean" },
+        "isBedtimeActive": { "type": "boolean" },
+        "isStudyModeActive": { "type": "boolean" },
+        "isLocationSharingEnabled": { "type": "boolean" },
+        "locationAddress": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" }
+      },
+      "required": ["childId", "parentId", "name"]
+    },
+    "SafetyAlert": {
+      "title": "SafetyAlert",
+      "description": "Safety notification or SOS event",
+      "type": "object",
+      "properties": {
+        "childId": { "type": "string" },
+        "parentId": { "type": "string" },
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "severity": { "type": "string" },
+        "isRead": { "type": "boolean" }
+      },
+      "required": ["childId", "parentId", "type", "title"]
+    },
+    "AccessRequest": {
+      "title": "AccessRequest",
+      "description": "Child request for screen time or app access",
+      "type": "object",
+      "properties": {
+        "childId": { "type": "string" },
+        "parentId": { "type": "string" },
+        "type": { "type": "string" },
+        "targetName": { "type": "string" },
+        "requestedMinutes": { "type": "number" },
+        "reason": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["childId", "parentId", "type", "targetName"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile collection"
+    },
+    "/families/{familyId}": {
+      "schema": { "$ref": "#/entities/Family" },
+      "description": "Family root collection"
+    },
+    "/families/{familyId}/devices/{deviceId}": {
+      "schema": { "$ref": "#/entities/Device" },
+      "description": "Registered devices for this family"
+    },
+    "/families/{familyId}/children/{childId}": {
+      "schema": { "$ref": "#/entities/ChildProfile" },
+      "description": "Children monitored in this family"
+    },
+    "/families/{familyId}/alerts/{alertId}": {
+      "schema": { "$ref": "#/entities/SafetyAlert" },
+      "description": "Safety alerts for this family"
+    },
+    "/families/{familyId}/requests/{requestId}": {
+      "schema": { "$ref": "#/entities/AccessRequest" },
+      "description": "Access requests sent within this family"
+    }
+  }
+}
